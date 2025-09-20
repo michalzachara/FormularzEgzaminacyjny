@@ -57,9 +57,9 @@ body {
 }
 
 .progress-fill {
-	width: 40%;
+	width: 100%;
 	height: 100%;
-	transition: width 0.3s ease;
+	transition: width 0.5s ease-in-out;
 }
 
 /* Sekcje formularza */
@@ -240,51 +240,50 @@ input[type='checkbox'] {
 }
 
 select {
-  padding: 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  background: #f3f4f6;
-  color: #111827;
-  font-size: clamp(0.9rem, 2.5vw, 0.95rem);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  width: 100%;
-  min-height: 44px; /* Minimum touch target size */
-  appearance: none; /* usuwa domyślne strzałki w przeglądarkach */
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b7280'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 10px 6px;
+	padding: 12px;
+	border: 1px solid #cbd5e1;
+	border-radius: 8px;
+	background: #f3f4f6;
+	color: #111827;
+	font-size: clamp(0.9rem, 2.5vw, 0.95rem);
+	cursor: pointer;
+	transition: all 0.2s ease;
+	width: 100%;
+	min-height: 44px; /* Minimum touch target size */
+	appearance: none; /* usuwa domyślne strzałki w przeglądarkach */
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b7280'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 12px center;
+	background-size: 10px 6px;
 }
 
 select:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+	outline: none;
+	border-color: #3b82f6;
+	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
 }
 
 option {
-  padding: 10px;
-  background: #f9fafb;
-  color: #111827;
+	padding: 10px;
+	background: #f9fafb;
+	color: #111827;
 }
 
 /* Zielony motyw */
 .theme-green select:focus {
-  border-color: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+	border-color: #10b981;
+	box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
 }
 
 .theme-green select {
-  background-color: #f3f4f6;
-  color: #111827;
+	background-color: #f3f4f6;
+	color: #111827;
 }
 
 .theme-green option {
-  background: #f9fafb;
-  color: #111827;
+	background: #f9fafb;
+	color: #111827;
 }
-
 
 @media (min-width: 576px) {
 	.container {
@@ -314,15 +313,14 @@ option {
 	}
 
 	select {
-    padding: 14px;
-    font-size: clamp(0.95rem, 2vw, 1rem);
-  }
+		padding: 14px;
+		font-size: clamp(0.95rem, 2vw, 1rem);
+	}
 
-  option {
-    padding: 12px;
-  }
+	option {
+		padding: 12px;
+	}
 }
-
 
 @media (min-width: 768px) {
 	.container {
@@ -361,10 +359,9 @@ option {
 	}
 
 	select {
-    border-radius: 10px;
-  }
+		border-radius: 10px;
+	}
 }
-
 
 @media (min-width: 992px) {
 	.container {
@@ -378,7 +375,6 @@ option {
 	}
 }
 
-
 @media (min-width: 1200px) {
 	.container {
 		padding: 30px;
@@ -388,7 +384,6 @@ option {
 		padding: 40px;
 	}
 }
-
 
 @media (prefers-contrast: high) {
 	input {
@@ -400,7 +395,6 @@ option {
 	}
 }
 
-
 @media (prefers-reduced-motion: reduce) {
 	* {
 		animation-duration: 0.01ms !important;
@@ -408,7 +402,6 @@ option {
 		transition-duration: 0.01ms !important;
 	}
 }
-
 
 @media print {
 	body {
@@ -428,7 +421,6 @@ option {
 	}
 }
 
-
 @media (max-height: 500px) and (orientation: landscape) {
 	.container {
 		margin: 10px auto;
@@ -442,7 +434,6 @@ option {
 		margin-bottom: 20px;
 	}
 }
-
 
 @media (max-width: 359px) {
 	.container {
@@ -461,6 +452,6 @@ option {
 
 	input {
 		padding: 10px;
-		font-size: 16px; 
+		font-size: 16px;
 	}
 }

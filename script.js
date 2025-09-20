@@ -35,81 +35,81 @@ let cos = {
 		},
 		{
 			nazwa: 'Technik Elektryk',
-			kod: '311206',
+			kod: '311303',
 			kwalifikacje: {
-				'ELE.12': 'Wykonywanie robót elektrycznych',
-				'ELE.14': 'Organizacja i kontrola robót elektrycznych',
+				'ELE.02': 'Montaż, uruchamianie i konserwacja instalacji, maszyn i urządzeń elektrycznych',
+				'ELE.05': 'Eksploatacja maszyn, urządzeń i instalacji elektrycznych',
 			},
 		},
 		{
 			nazwa: 'Technik Geodeta',
-			kod: '311208',
+			kod: '311104',
 			kwalifikacje: {
-				'INF.12': 'Wykonywanie robót informatycznych',
-				'INF.14': 'Organizacja i kontrola robót informatycznych',
+				'BUD.18': 'Wykonywanie pomiarów sytuacyjnych, wysokościowych i realizacyjnych oraz opracowywanie wyników tych pomiarów.',
+				'BUD.19': 'Wykonywanie prac geodezyjnych związanych z katastrem i gospodarką nieruchomościami.',
 			},
 		},
 		{
 			nazwa: 'Technik Hotelarstwa',
-			kod: '311208',
+			kod: '422402',
 			kwalifikacje: {
-				'INF.12': 'Wykonywanie robót informatycznych',
-				'INF.14': 'Organizacja i kontrola robót informatycznych',
+				'HGT.03': 'Obsługa gości w obiekcie świadczącym usługi hotelarskie ',
+				'HGT.06': 'Realizacja usług w recepcji ',
 			},
 		},
 		{
 			nazwa: 'Technik Informatyk',
-			kod: '311208',
+			kod: '351203',
 			kwalifikacje: {
-				'INF.12': 'Wykonywanie robót informatycznych',
-				'INF.14': 'Organizacja i kontrola robót informatycznych',
+				'INF.02': "Administracja i eksploatacja systemów komputerowych, urządzeń\n peryferyjnych i lokalnych sieci komputerowych ",
+				'INF.04': 'Tworzenie i administrowanie stronami i aplikacjami internetowymi oraz bazami danych ',
 			},
 		},
 		{
 			nazwa: 'Technik Mechatronik',
-			kod: '311208',
+			kod: '311410',
 			kwalifikacje: {
-				'INF.12': 'Wykonywanie robót informatycznych',
-				'INF.14': 'Organizacja i kontrola robót informatycznych',
+				'ELM.03': 'Montaż, uruchamianie i konserwacja urządzeń i systemów mechatronicznych.',
+				'ELM.06': 'Eksploatacja i programowanie urządzeń i systemów mechatronicznych.',
 			},
 		},
 		{
 			nazwa: 'Technik Programista',
-			kod: '311208',
+			kod: '351406',
 			kwalifikacje: {
-				'INF.12': 'Wykonywanie robót informatycznych',
-				'INF.14': 'Organizacja i kontrola robót informatycznych',
+				'INF.03': 'Tworzenie i administrowanie stronami i aplikacjami internetowymi oraz bazami danych',
+				'INF.04': 'Projektowanie, programowanie i testowanie aplikacji',
 			},
 		},
 		{
 			nazwa: 'Technik Usług Fryzjerskich',
-			kod: '311208',
+			kod: '514105',
 			kwalifikacje: {
-				'INF.12': 'Wykonywanie robót informatycznych',
-				'INF.14': 'Organizacja i kontrola robót informatycznych',
+				'FRK.01': 'Wykonywanie usług fryzjerskich',
+				'FRK.03': 'Projektowanie i wykonywanie fryzur',
 			},
 		},
 		{
 			nazwa: 'Technik Żywienia i Usług Gastronomicznych',
-			kod: '311208',
+			kod: '343404',
 			kwalifikacje: {
-				'INF.12': 'Wykonywanie robót informatycznych',
-				'INF.14': 'Organizacja i kontrola robót informatycznych',
+				'HGT.02': 'Przygotowanie i wydawanie dań',
+				'HGT.12': 'Organizacja żywienia i usług gastronomicznych',
 			},
 		},
 		{
 			nazwa: 'Technik Aranżacji Wnętrz',
-			kod: '311208',
+			kod: '311224',
 			kwalifikacje: {
-				'INF.12': 'Wykonywanie robót informatycznych',
-				'INF.14': 'Organizacja i kontrola robót informatycznych',
+				'BUD.34.': 'Planowanie i wykonywanie poszczególnych etapów wykończenia wnętrz ',
+				'BUD.35': 'Wykonywanie aranżacji wnętrz ',
 			},
 		},
 	],
 	I_branzowa: [
 		{
 			nazwa: 'Elektryk',
-			kod: '311208',
+			kod: '741103',
 			kwalifikacje: {
 				'INF.12': 'Wykonywanie robót informatycznych',
 				'INF.14': 'Organizacja i kontrola robót informatycznych',
@@ -191,6 +191,7 @@ let cos = {
 		},
 	],
 }
+
 
 function fillProfessions() {
 	const select = document.getElementById('profession')
@@ -586,7 +587,7 @@ async function drawPdf() {
 
 	//nazwa kwalifikacji
 	firstPage.drawText(nameQualification, {
-		x: 270,
+		x: 200,
 		y: 372,
 		size: 11,
 		font: customFont,
@@ -651,7 +652,7 @@ async function drawPdf() {
 
 	//nazwa zawodu
 	firstPage.drawText(profession, {
-		x: 270,
+		x: 200,
 		y: 310,
 		size: 11,
 		font: customFont,
@@ -780,7 +781,7 @@ document.getElementById('generateBtn').addEventListener('click', () => {
 		attachments.push(el.value)
 	})
 
-	if (!validForm()) return
+	// if (!validForm()) return
 
 	console.log(profession)
 	drawPdf()
@@ -896,3 +897,4 @@ document.getElementById('qualification').addEventListener('change', function () 
 		if (found) break
 	}
 })
+
