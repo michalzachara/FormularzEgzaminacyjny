@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formularz egzaminacyjny</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-green" style="margin-top: 20px;">
+  <div class="container">
+    <div class="header" >
+      <h1>Formularz Egzaminacyjny</h1>
+      <p>* Wypełnij wszystkie wymagane pola</p>
+    </div>
+
+    <div class="form-content">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <form id="examForm">
+        <div class="section">
+          <h2>Dane Osobowe</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Imię *</label>
+              <input type="text" id="name" name="name" required>
+              <div class="error-message" id="nameError"></div>
+            </div>
+            <div class="form-group">
+              <label for="surname">Nazwisko *</label>
+              <input type="text" id="surname" name="surname" required>
+              <div class="error-message" id="surnameError"></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dob">Data urodzenia *</label>
+              <input type="date" id="dob" name="dob" required>
+              <div class="error-message" id="dobError"></div>
+            </div>
+            <div class="form-group">
+              <label for="pesel">PESEL lub  seria i numer paszportu*</label>
+              <input type="text" id="pesel" name="pesel" required >
+              <div class="error-message" id="peselError"></div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="jestem">Jestem:</>
+                <div class="radio-group">
+                  <div class="radio-item">
+                    <input checked type="radio" id="uczniem" name="jestem" value="uczniem">
+                    <label for="uczniem">Uczniem</label>
+                  </div>
+                  <div class="radio-item">
+                    <input type="radio" id="sluchaczem" name="jestem" value="sluchaczem">
+                    <label for="sluchaczem">Słuchaczem</label>
+                  </div>
+                  <div class="radio-item">
+                    <input type="radio" id="absolwentem" name="jestem" value="absolwentem">
+                    <label for="absolwentem">Absolwentem</label>
+                  </div>
+                </div>
+                <div class="error-message" id="jestemError"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Adres</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">Miejscowość *</label>
+              <input type="text" id="city" name="city" required>
+              <div class="error-message" id="cityError"></div>
+            </div>
+            <div class="form-group">
+              <label for="postalCode">Kod pocztowy *</label>
+              <input type="text" id="postalCode" name="postalCode" required pattern="[0-9]{2}-[0-9]{3}"
+                placeholder="00-000">
+              <div class="error-message" id="postalCodeError"></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="street">Ulica i nr domu *</label>
+              <input type="text" id="street" name="street" required>
+              <div class="error-message" id="streetError"></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Nr telefonu *</label>
+              <input type="tel" id="phone" name="phone" required pattern="[0-9]{9}" placeholder="123456789">
+              <div class="error-message" id="phoneError"></div>
+            </div>
+            <div class="form-group">
+              <label for="email">Adres email *</label>
+              <input type="email" id="email" name="email" required>
+              <div class="error-message" id="emailError"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Informacje o Egzaminie</h2>
+          <div class="form-group">
+            <label>Termin zdawania *</label>
+            <div class="radio-group">
+              <div class="radio-item">
+                <input type="radio" id="winter" name="examTerm" value="Zima" required>
+                <label for="winter">Zima (do 15 wrzesnia)</label>
+              </div>
+              <div class="radio-item">
+                <input checked type="radio" id="summer" name="examTerm" value="Lato">
+                <label for="summer">Lato (do 7 lutego)</label>
+              </div>
+            </div>
+            <div class="error-message" id="examTermError"></div>
+          </div>
+
+          <div class="form-row" style="margin-top: 10px;">
+            <div class="form-group">
+              <label for="profession">Nazwa zawodu *</label>
+              <select name="profession" id="profession" required>
+                <option value="">-- Wybierz zawód --</option>
+              </select>
+              <div class="error-message" id="professionError"></div>
+            </div>
+          </div>
+
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="qualification">Kod Kwalifikacji *</label>
+              <select disabled name="qualification" id="qualification" required>
+                <option value="">-- Wybierz kwalifikację --</option>
+              </select>
+              <div class="error-message" id="qualificationError"></div>
+            </div>
+            <div class="form-group">
+              <label for="qualification">Nazwa kwalifikacji *</label>
+              <input disabled type="text" id="nameQualification" name="nameQualification" required>
+              <div class="error-message" id="nameQualification"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <h2>Do egzaminu</h2>
+            <label for="">Przystępuję: *</label>
+            <div class="radio-group">
+              <div class="radio-item">
+                <input checked type="radio" id="firstTime" name="examAttempt" value="pierwszy" required>
+                <label for="firstTime">Po raz pierwszy</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="written" name="examAttempt" value="kolejnyPisemny">
+                <label for="written">Po raz kolejny w części pisemnej</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="practical" name="examAttempt" value="kolejnyPraktyczny">
+                <label for="practical">Po raz kolejny w części praktycznej</label>
+              </div>
+            </div>
+            <div class="error-message" id="examAttemptError"></div>
+          </div>
+
+          <div class="form-group" style="margin-top: 10px;">
+            <label>Ubiegam się o dostosowanie do warunków egzaminu *</label>
+            <div class="radio-group">
+              <div class="radio-item">
+                <input type="radio" id="yes" name="accommodation" value="TAK" required>
+                <label for="yes">TAK</label>
+              </div>
+              <div class="radio-item">
+                <input checked type="radio" id="no" name="accommodation" value="NIE">
+                <label for="no">NIE</label>
+              </div>
+            </div>
+            <div class="error-message" id="accommodationError"></div>
+          </div>
+
+          <div class="form-group" style="margin-top: 10px;">
+            <label>Do deklaracji dołączam:</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="regulation1" name="attachments" value="pierwsze">
+                <label for="regulation1">Orzeczenie/opinię publicznej poradni psychologiczno-pedagogicznej (w przypadku
+                  występowania dysfunkcji)</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="regulation2" name="attachments" value="drugie">
+                <label for="regulation2">Zaświadczenie o stanie zdrowia wydane przez lekarza* (w przypadku choroby lub
+                  niesprawności czasowej)
+                </label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="regulation3" name="attachments" value="trzecie">
+                <label for="regulation3">Świadectwo ukończenia szkoły</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-container">
+          <button type="button" class="btn" id="generateBtn">
+            Generuj PDF
+          </button>
+          <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Generowanie PDF...</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="https://unpkg.com/@pdf-lib/fontkit/dist/fontkit.umd.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
