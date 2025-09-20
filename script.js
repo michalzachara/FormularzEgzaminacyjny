@@ -781,7 +781,7 @@ document.getElementById('generateBtn').addEventListener('click', () => {
 		attachments.push(el.value)
 	})
 
-	// if (!validForm()) return
+	if (!validForm()) return
 
 	console.log(profession)
 	drawPdf()
