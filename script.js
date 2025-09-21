@@ -23,21 +23,21 @@ let kod
 
 let attachments = []
 
-let cos = {
+const data = {
 	technik: [
 		{
 			nazwa: 'Technik Budownictwa',
 			kod: '311204',
 			kwalifikacje: {
 				'BUD.12': 'Wykonywanie robót murarskich i tynkarskich',
-				'BUD.14': 'Organizacja i kontrola robót budowlanych oraz sporządzanie kosztorysów',
+				'BUD.14': 'Organizacja i kontrola robót budowlanych oraz sporządzanie | kosztorysów',
 			},
 		},
 		{
 			nazwa: 'Technik Elektryk',
 			kod: '311303',
 			kwalifikacje: {
-				'ELE.02': 'Montaż, uruchamianie i konserwacja instalacji, maszyn i urządzeń elektrycznych',
+				'ELE.02': 'Montaż, uruchamianie i konserwacja instalacji, maszyn i urządzeń | elektrycznych',
 				'ELE.05': 'Eksploatacja maszyn, urządzeń i instalacji elektrycznych',
 			},
 		},
@@ -45,7 +45,8 @@ let cos = {
 			nazwa: 'Technik Geodeta',
 			kod: '311104',
 			kwalifikacje: {
-				'BUD.18': 'Wykonywanie pomiarów sytuacyjnych, wysokościowych i realizacyjnych oraz opracowywanie wyników tych pomiarów.',
+				'BUD.18':
+					'Wykonywanie pomiarów sytuacyjnych, wysokościowych i realizacyjnych | oraz opracowywanie wyników tych pomiarów.',
 				'BUD.19': 'Wykonywanie prac geodezyjnych związanych z katastrem i gospodarką nieruchomościami.',
 			},
 		},
@@ -61,15 +62,16 @@ let cos = {
 			nazwa: 'Technik Informatyk',
 			kod: '351203',
 			kwalifikacje: {
-				'INF.02': "Administracja i eksploatacja systemów komputerowych, urządzeń\n peryferyjnych i lokalnych sieci komputerowych ",
-				'INF.04': 'Tworzenie i administrowanie stronami i aplikacjami internetowymi oraz bazami danych ',
+				'INF.02':
+					'Administracja i eksploatacja systemów komputerowych, urządzeń | peryferyjnych i lokalnych sieci komputerowych ',
+				'INF.03': 'Tworzenie i administrowanie stronami i aplikacjami internetowymi | oraz bazami danych ',
 			},
 		},
 		{
 			nazwa: 'Technik Mechatronik',
 			kod: '311410',
 			kwalifikacje: {
-				'ELM.03': 'Montaż, uruchamianie i konserwacja urządzeń i systemów mechatronicznych.',
+				'ELM.03': 'Montaż, uruchamianie i konserwacja urządzeń i systemów | mechatronicznych.',
 				'ELM.06': 'Eksploatacja i programowanie urządzeń i systemów mechatronicznych.',
 			},
 		},
@@ -77,7 +79,7 @@ let cos = {
 			nazwa: 'Technik Programista',
 			kod: '351406',
 			kwalifikacje: {
-				'INF.03': 'Tworzenie i administrowanie stronami i aplikacjami internetowymi oraz bazami danych',
+				'INF.03': 'Tworzenie i administrowanie stronami i aplikacjami internetowymi | oraz bazami danych',
 				'INF.04': 'Projektowanie, programowanie i testowanie aplikacji',
 			},
 		},
@@ -192,12 +194,11 @@ let cos = {
 	],
 }
 
-
 function fillProfessions() {
 	const select = document.getElementById('profession')
 	select.innerHTML = '<option value="">-- Wybierz zawód --</option>'
 
-	for (const category in cos) {
+	for (const category in data) {
 		const group = document.createElement('optgroup')
 		group.label =
 			category === 'technik'
@@ -208,7 +209,7 @@ function fillProfessions() {
 				? 'II Branżowa'
 				: category
 
-		cos[category].forEach(q => {
+		data[category].forEach(q => {
 			const option = document.createElement('option')
 			option.value = `${category}|${q.nazwa}`
 			option.textContent = q.nazwa
@@ -362,7 +363,7 @@ function validForm() {
 async function drawPdf() {
 	const { PDFDocument, rgb } = PDFLib
 
-	const existingPdfBytes = await fetch('zalacznik.pdf').then(res => res.arrayBuffer())
+	const existingPdfBytes = await fetch('zalacznik3.pdf').then(res => res.arrayBuffer())
 	const fontBytes = await fetch('DejaVuSans.ttf').then(res => res.arrayBuffer())
 
 	const pdfDoc = await PDFDocument.load(existingPdfBytes)
@@ -496,7 +497,7 @@ async function drawPdf() {
 		opacity: 1,
 	})
 
-	firstPage.drawText(postalCode + capitalize(city), {
+	firstPage.drawText(postalCode + ' ' + capitalize(city), {
 		x: 200,
 		y: 496,
 		size: 9,
@@ -575,7 +576,7 @@ async function drawPdf() {
 		opacity: 1,
 	})
 
-	let numberCode = qualification.split('.')[1].trim()
+	let numberCode = qualification.split('.')[1]
 	firstPage.drawText(numberCode, {
 		x: 130,
 		y: 371,
@@ -585,15 +586,31 @@ async function drawPdf() {
 		opacity: 1,
 	})
 
+	let words = nameQualification.trim().split('|')
+	let s1 = words[0]
+	let s2 = words[1] || ''
+
+	console.log(s1, s2)
+
 	//nazwa kwalifikacji
-	firstPage.drawText(nameQualification, {
-		x: 200,
+	firstPage.drawText(s1, {
+		x: 180,
 		y: 372,
 		size: 11,
 		font: customFont,
 		color: rgb(0, 0, 0),
 		opacity: 1,
 	})
+
+	s2 == '' ||
+		firstPage.drawText(s2, {
+			x: 177,
+			y: 357,
+			size: 11,
+			font: customFont,
+			color: rgb(0, 0, 0),
+			opacity: 1,
+		})
 
 	//kod zawodu
 	firstPage.drawText(kod[0], {
@@ -783,7 +800,6 @@ document.getElementById('generateBtn').addEventListener('click', () => {
 
 	if (!validForm()) return
 
-	console.log(profession)
 	drawPdf()
 })
 
@@ -850,8 +866,8 @@ document.getElementById('profession').addEventListener('change', function () {
 
 	const [selectedCategory, selectedName] = selected.split('|')
 
-	if (cos[selectedCategory]) {
-		cos[selectedCategory].forEach(q => {
+	if (data[selectedCategory]) {
+		data[selectedCategory].forEach(q => {
 			if (q.nazwa === selectedName) {
 				kod = q.kod
 				if (Object.keys(q.kwalifikacje).length > 0) {
@@ -882,8 +898,8 @@ document.getElementById('qualification').addEventListener('change', function () 
 	}
 
 	let found = false
-	for (const category in cos) {
-		for (const q of cos[category]) {
+	for (const category in data) {
+		for (const q of data[category]) {
 			if (q.kod === selectedCode) {
 				nameInput.value = q.nazwa
 				found = true
@@ -897,4 +913,3 @@ document.getElementById('qualification').addEventListener('change', function () 
 		if (found) break
 	}
 })
-
