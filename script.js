@@ -857,11 +857,11 @@ document.getElementById('postalCode').addEventListener('input', function () {
 })
 
 document.getElementById('profession').addEventListener('change', function () {
+	document.getElementById('nameQualification').value = ''
 	const selected = this.value
 	const qualSelect = document.getElementById('qualification')
 	qualSelect.disabled = false
 	qualSelect.innerHTML = '<option value="">-- Wybierz kod --</option>'
-
 	if (!selected) return
 
 	const [selectedCategory, selectedName] = selected.split('|')
