@@ -10,7 +10,7 @@
 
 <body class="theme-green" style="margin-top: 20px;">
   <div class="container">
-    <div class="header" >
+    <div class="header">
       <h1>Formularz Egzaminacyjny</h1>
       <p>* Wypełnij wszystkie wymagane pola</p>
     </div>
@@ -42,8 +42,8 @@
               <div class="error-message" id="dobError"></div>
             </div>
             <div class="form-group">
-              <label for="pesel">PESEL lub  seria i numer paszportu*</label>
-              <input type="text" id="pesel" name="pesel" required >
+              <label for="pesel">PESEL lub seria i numer paszportu*</label>
+              <input type="text" id="pesel" name="pesel" required>
               <div class="error-message" id="peselError"></div>
             </div>
           </div>
@@ -218,6 +218,12 @@
       </form>
     </div>
   </div>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Stworzone przez <strong>Michał Zachara</strong> —
+      <a href="https://github.com/michalzachara" target="_blank">GitHub</a>
+    </p>
+  </footer>
 
   <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
   <script src="https://unpkg.com/@pdf-lib/fontkit/dist/fontkit.umd.min.js"></script>

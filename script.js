@@ -913,3 +913,6 @@ document.getElementById('qualification').addEventListener('change', function () 
 		if (found) break
 	}
 })
+
+
+document.getElementById('year').textContent = new Date().getFullYear()
